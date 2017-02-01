@@ -1,6 +1,7 @@
 import {Component} from 'react';
 import {hh, div, h1, p, header} from 'react-hyperscript-helpers';
-import PersonEditForm from './person-edit-form';
+import Posts from './posts';
+import Notification from './notification';
 
 export class Application extends Component {
   render() {
@@ -11,7 +12,8 @@ export class Application extends Component {
           h1('React Tape Wiggle'),
           p('.description', 'This is a demo')
         ]),
-        PersonEditForm()
+        Notification(),
+        Posts()
       ])
     );
   }

@@ -5,11 +5,14 @@
   "main": "index.js",
   "scripts": {
     "lint": "eslint 'src/**/*.js' 'test/**/*.js'",
-    "test": "npm run lint && tape -r babel-register 'src/**/*-test.js' | tap-spec",
+    "pure-test": "$(npm bin)/tape -r babel-register 'src/**/*-test.js' | tap-spec || true",
+    "test": "npm run lint && npm run pure-test",
     "browserify": "browserify -d src/index.js -o build/index.js -t [ babelify ]",
     "markup": "cp src/index.html build",
     "css": "node-sass --source-map true src/scss/main.scss build/css/main.css",
-    "build": "mkdir -p build && npm run browserify && npm run markup && npm run css"
+    "build": "mkdir -p build && npm run browserify && npm run markup && npm run css",
+    "watch": "watch -p /scss/ 'npm run browserify' src/ & watch 'npm run css' src/scss/",
+    "coverage": "nyc npm test > /dev/null && nyc report"
   },
   "keywords": [
     "react",
@@ -20,6 +23,7 @@
   "license": "MIT",
   "dependencies": {
     "@benmosher/redux-promise": "^0.6.0",
+    "isomorphic-fetch": "^2.2.1",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
     "react-hyperscript-helpers": "^1.2.0",
@@ -36,6 +40,7 @@
     "enzyme": "^2.7.1",
     "eslint": "^3.14.1",
     "node-sass": "^4.4.0",
+    "nyc": "^10.1.2",
     "proxyquire": "^1.7.11",
     "react-addons-test-utils": "^15.4.2",
     "sinon": "^1.17.7",
