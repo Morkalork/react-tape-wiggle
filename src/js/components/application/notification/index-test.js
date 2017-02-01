@@ -1,9 +1,15 @@
 import test from 'tape';
 import {shallow} from 'enzyme';
-import Notification from './index';
+import {Notification} from './index';
+import {hh} from 'react-hyperscript-helpers';
+
+const setup = () => {
+  return hh(Notification);
+};
 
 test('Notification should render a div with a close button, a title and a message', (assert) => {
-  const wrapper = shallow(Notification({message: 'A message', title: 'A title'}));
+  const NotificationHelper = setup();
+  const wrapper = shallow(NotificationHelper({showing: true, message: 'A message', title: 'A title'}));
 
   assert.equals(wrapper.find('p.close').length, 1, 'A close button was rendered');
   assert.equals(wrapper.find('h3').length, 1, 'A title was rendered');
@@ -12,14 +18,16 @@ test('Notification should render a div with a close button, a title and a messag
 });
 
 test('Notification doesn\'t render a title if none is supplied', (assert) => {
-  const wrapper = shallow(Notification({message: ''}));
+  const NotificationHelper = setup();
+  const wrapper = shallow(NotificationHelper({showing: true, message: ''}));
 
   assert.equals(wrapper.find('h3').length, 0, 'No title was rendered');
   assert.end();
 });
 
 test('Notification closes after click on close', (assert) => {
-  const wrapper = shallow(Notification({message: ''}));
+  const NotificationHelper = setup();
+  const wrapper = shallow(NotificationHelper({showing: true, message: ''}));
 
   assert.equals(wrapper.find('.notification').length, 1, 'Notification was rendered before click');
   wrapper.find('.close').simulate('click');

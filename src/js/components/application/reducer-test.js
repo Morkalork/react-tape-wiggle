@@ -34,7 +34,7 @@ test('Application reducer returns the default state if nothing is supplied', (as
   assert.end();
 });
 
-test('Application reducer returns the same state if a bogus action is sent in', (assert) =>  {
+test('Application reducer returns the same state if a bogus action is sent in', (assert) => {
   const reducer = setup();
   const action = {
     type: 'BOGUS_ACTION'

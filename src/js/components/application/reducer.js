@@ -9,8 +9,10 @@ const defaultState = {
 export default (previousState = defaultState, action) => {
   const newState = Object.assign({}, previousState);
 
-  newState.notification = notificationReducer(previousState, action);
-  newState.posts = postsReducer(previousState, action);
+  newState.notification = notificationReducer(previousState.notification, action);
+  newState.posts = postsReducer(previousState.posts, action);
+
+  console.log({newState});
 
   return newState;
-}
+};

@@ -1,5 +1,6 @@
-import {Component, PropTypes} from 'react';
+import {Component} from 'react';
 import {hh, div, p, h3} from 'react-hyperscript-helpers';
+import {connect} from 'react-redux';
 
 /**
  * A component that renders a notification
@@ -9,7 +10,7 @@ export class Notification extends Component {
     super(props);
 
     this.state = {
-      showing: true
+      showing: this.props.showing
     };
   }
 
@@ -36,10 +37,13 @@ export class Notification extends Component {
   }
 }
 
-Notification.propTypes = {
-  message: PropTypes.string.isRequired,
-  title: PropTypes.string,
-  type: PropTypes.string
-};
+export default hh(connect((state) => {
+  console.log({state});
 
-export default hh(Notification);
+  return {
+    showing: state.notification.type !== null,
+    type: state.notification.type,
+    title: state.notification.title,
+    message: state.notification.message
+  };
+})(Notification));

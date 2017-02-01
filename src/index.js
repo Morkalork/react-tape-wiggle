@@ -5,8 +5,12 @@ import {Provider} from 'react-redux';
 import {render} from 'react-dom';
 
 const initialState = {
-  name: '',
-  age: 0
+  notification: {
+    type: null,
+    title: '',
+    message: ''
+  },
+  posts: []
 };
 
 const store = createStore(initialState);
