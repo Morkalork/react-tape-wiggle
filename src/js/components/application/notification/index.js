@@ -1,6 +1,7 @@
 import {Component} from 'react';
 import {hh, div, p, h3} from 'react-hyperscript-helpers';
 import {connect} from 'react-redux';
+import {hideAllNotifications} from './actions';
 
 /**
  * A component that renders a notification
@@ -8,14 +9,10 @@ import {connect} from 'react-redux';
 export class Notification extends Component {
   constructor(props) {
     super(props);
-
-    this.state = {
-      showing: this.props.showing
-    };
   }
 
   render() {
-    if (!this.state.showing) {
+    if (!this.props.showing) {
       return null;
     }
 
@@ -24,7 +21,7 @@ export class Notification extends Component {
     };
 
     const closeAttributes = {
-      onClick: () => this.setState({showing: false})
+      onClick: () => this.props.dispatch(hideAllNotifications())
     };
 
     return (
@@ -38,8 +35,6 @@ export class Notification extends Component {
 }
 
 export default hh(connect((state) => {
-  console.log({state});
-
   return {
     showing: state.notification.type !== null,
     type: state.notification.type,

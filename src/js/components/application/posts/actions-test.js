@@ -1,15 +1,28 @@
 import test from 'tape';
 import proxyquire from 'proxyquire';
 import sinon from 'sinon';
-import {FAIL_POST_LOAD} from './actions';
 
 // Stubs
 const fetchStub = sinon.stub();
 const dispatchStub = sinon.stub();
+const showInfoStub = sinon.stub();
+const showErrorStub = sinon.stub();
+const hideInfoStub = sinon.stub();
 
 const setup = () => {
+  fetchStub.reset();
+  dispatchStub.reset();
+  showInfoStub.reset();
+  showErrorStub.reset();
+  hideInfoStub.reset();
+
   return proxyquire('./actions', {
-    'isomorphic-fetch': fetchStub
+    'isomorphic-fetch': fetchStub,
+    '../notification/actions': {
+      showInfo: showInfoStub,
+      showError: showErrorStub,
+      hideInfo: hideInfoStub
+    }
   });
 };
 
@@ -35,8 +48,8 @@ test('refreshPosts should handle a call failures', (assert) => {
 
   // Verify that the dispatchStub was called and that the argument passed in
   // was an object with a property type matching the failure action
-  assert.notEquals(dispatchStub.lastCall, null, 'There is a dispatch call');
-  assert.equals(dispatchStub.lastCall.args[0].type, FAIL_POST_LOAD, 'Call failed');
+  assert.equals(showInfoStub.callCount, 1, 'Show info was called');
+  assert.equals(showErrorStub.callCount, 1, 'Show error was called');
   assert.end();
 
   // Reset the changes we made to the stubs
@@ -62,10 +75,39 @@ test('refreshPosts should handle a successful call with a failed payload', (asse
   const thunk = actions.refreshPosts();
   thunk(dispatchStub);
 
-  assert.notEquals(dispatchStub.lastCall, null, 'There is a dispatch call');
-  assert.equals(dispatchStub.lastCall.args[0].type, FAIL_POST_LOAD, 'Call failed');
+  assert.equals(showInfoStub.callCount, 1, 'Show info was called');
+  assert.equals(showErrorStub.callCount, 1, 'Show error was called');
   assert.end();
 
   fetchStub.reset();
   dispatchStub.reset();
+});
+
+test('refreshPosts should handle a successful call', (assert) => {
+  const response = {
+    ok: true,
+    json: () => {
+      return {
+        then: (func) => func()
+      };
+    }
+  };
+
+  const promise = {
+    then: (func) => {
+      func(response);
+
+      return promise;
+    },
+    catch: () => promise
+  };
+
+  fetchStub.returns(promise);
+  const actions = setup();
+  const thunk = actions.refreshPosts();
+  thunk(dispatchStub);
+
+  assert.equals(showInfoStub.callCount, 1, 'Show info was called');
+  assert.equals(hideInfoStub.callCount, 1, 'Hide info was called');
+  assert.end();
 });
