@@ -34,7 +34,7 @@ npm run watch
 So, this is a react project and I've separated the UI into components found in the `src/js/` folder. They are built in a OOP fashion using react-hyperscript-helpers instead of JSX. Why? Well, why not.
 The application is very simple, it has a button which on click loads fake posts from a public API ([https://jsonplaceholder.typicode.com/](https://jsonplaceholder.typicode.com/)). The structure of the project is this:
 
-![The project structure](project-assets/structure.png)
+![The project structure](project-assets/design.png)
 
 The **Application** component uses two other components (there might be more after some refactoring, but this is how it starts out before manic cleaning). The posts are loaded through a button-click in the **Application** component and the **Posts** component listens in on the store contents to get the posts.
 This means that every time the store updates (through the button-click in Application) the Posts component re-renders, but not the rest of the page. When the refresh of posts happen it also triggers a notification to show in the **Notification** component, which also listens to the store.
