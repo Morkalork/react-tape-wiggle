@@ -6,11 +6,11 @@ import {SET_POSTS} from './actions';
  * @param action The action taken that invoked this reducer
  */
 export default (previousState = [], action) => {
-  const newState = Object.assign({}, previousState);
+  let newState = previousState.slice();
 
   switch (action.type) {
   case SET_POSTS:
-    newState.posts = action.payload;
+    newState = action.payload;
     break;
   }
 

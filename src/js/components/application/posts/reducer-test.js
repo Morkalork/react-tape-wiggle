@@ -8,13 +8,11 @@ test('PostReducer returns the same state if no action is taken', (assert) => {
   };
 
   const post = {id: 1};
-  const state = {
-    posts: [post]
-  };
+  const state = [post];
   const newState = reducer(state, action);
 
-  assert.equals(newState.posts.length, state.posts.length, 'The same amount of posts are still available');
-  assert.equals(newState.posts[0].id, post.id, 'The same post is available');
+  assert.equals(newState.length, state.length, 'The same amount of posts are still available');
+  assert.equals(newState[0].id, post.id, 'The same post is available');
   assert.end();
 });
 
@@ -29,13 +27,11 @@ test('PostReducer returns a new state with the correct posts after a SET_POSTS c
     payload: posts
   };
 
-  const state = {
-    posts: []
-  };
+  const state = [];
   const newState = reducer(state, action);
 
-  assert.equals(newState.posts.length, posts.length, 'The number of posts is correct');
-  assert.equals(newState.posts[0].id, posts[0].id, 'The first post is correct');
-  assert.equals(newState.posts[1].id, posts[1].id, 'The second post is correct');
+  assert.equals(newState.length, posts.length, 'The number of posts is correct');
+  assert.equals(newState[0].id, posts[0].id, 'The first post is correct');
+  assert.equals(newState[1].id, posts[1].id, 'The second post is correct');
   assert.end();
 });

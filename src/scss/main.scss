@@ -1,0 +1,48 @@
+$box-shadow: 0 0 1em #333;
+$grey-background: #eaeaea;
+$dark-background: #666;
+
+body {
+  background-color: $grey-background;
+}
+
+#app {
+
+  .wrapper {
+    background-color: #fff;
+    width: 75%;
+    border: 3px #000 solid;
+    padding: 2em;
+    margin: 2em auto;
+    box-shadow: $box-shadow;
+
+    .post-area {
+      .posts {
+        .post {
+          margin: 2em;
+          border: 1px #000 solid;
+          background-color: $grey-background;
+          box-shadow: $box-shadow;
+          padding: 1em;
+          transition: 0.5s;
+
+          p {
+
+            &.title {
+              font-weight: bold;
+            }
+
+            &.body {
+              margin-left: 1em;
+            }
+          }
+
+          &:hover {
+            background-color: $dark-background;
+            color: #FFF;
+          }
+        }
+      }
+    }
+  }
+}
