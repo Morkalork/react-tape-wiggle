@@ -52,10 +52,6 @@ test('refreshPosts should handle a call failures', (assert) => {
   assert.equals(showInfoStub.callCount, 1, 'Show info was called');
   assert.equals(showErrorStub.callCount, 1, 'Show error was called');
   assert.end();
-
-  // Reset the changes we made to the stubs
-  fetchStub.reset();
-  dispatchStub.reset();
 });
 
 test('refreshPosts should handle a successful call with a failed payload', (assert) => {
@@ -79,9 +75,6 @@ test('refreshPosts should handle a successful call with a failed payload', (asse
   assert.equals(showInfoStub.callCount, 1, 'Show info was called');
   assert.equals(showErrorStub.callCount, 1, 'Show error was called');
   assert.end();
-
-  fetchStub.reset();
-  dispatchStub.reset();
 });
 
 test('refreshPosts should handle a successful call', (assert) => {

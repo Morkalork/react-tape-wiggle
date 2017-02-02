@@ -6,6 +6,7 @@
   "scripts": {
     "lint": "eslint 'src/**/*.js' 'test/**/*.js'",
     "pure-test": "$(npm bin)/tape -r babel-register 'src/**/*-test.js' | tap-spec || true",
+    "win-test": "tape -r babel-register 'src/**/*-test.js' | tap-spec",
     "test": "npm run lint && npm run pure-test",
     "browserify": "browserify -d src/index.js -o build/index.js -t [ babelify ]",
     "markup": "cp src/index.html build",
