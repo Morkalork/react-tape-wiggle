@@ -1,9 +1,10 @@
 import {Component} from 'react';
-import {hh, div, h1, p, header, button} from 'react-hyperscript-helpers';
+import {hh, div, p, button} from 'react-hyperscript-helpers';
 import Posts from './posts';
 import Notification from './notification';
 import {refreshPosts} from './posts/actions';
 import {connect} from 'react-redux';
+import ApplicationHeader from './application-header';
 
 /**
  * This is the application component, the base component which renders all other components
@@ -12,10 +13,7 @@ export class Application extends Component {
   render() {
     return (
       div('.wrapper', [
-        header([
-          h1('React Tape Wiggle'),
-          p('.description', 'This is a demo')
-        ]),
+        ApplicationHeader(),
         Notification(),
         p('.load-posts-area', [
           button('.load-posts', {
