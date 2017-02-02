@@ -5,8 +5,6 @@ import Post from './post';
 
 export class Posts extends Component {
   render() {
-    console.log('Posts: ', this.props.posts);
-
     return (
       div('.post-area', [
         h2('Available posts'),

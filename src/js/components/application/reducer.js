@@ -12,7 +12,5 @@ export default (previousState = defaultState, action) => {
   newState.notification = notificationReducer(previousState.notification, action);
   newState.posts = postsReducer(previousState.posts, action);
 
-  console.log({newState});
-
   return newState;
 };

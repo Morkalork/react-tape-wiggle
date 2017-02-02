@@ -24,13 +24,3 @@ test('Notification doesn\'t render a title if none is supplied', (assert) => {
   assert.equals(wrapper.find('h3').length, 0, 'No title was rendered');
   assert.end();
 });
-
-test('Notification closes after click on close', (assert) => {
-  const NotificationHelper = setup();
-  const wrapper = shallow(NotificationHelper({showing: true, message: ''}));
-
-  assert.equals(wrapper.find('.notification').length, 1, 'Notification was rendered before click');
-  wrapper.find('.close').simulate('click');
-  assert.equals(wrapper.find('.notification').length, 0, 'Notification was not rendered after click');
-  assert.end();
-});

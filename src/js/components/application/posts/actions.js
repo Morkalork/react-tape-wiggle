@@ -21,6 +21,9 @@ export const refreshPosts = () => {
         .json()
         .then((data) => {
           dispatch(setPosts(data));
+
+          // After a while, hide the notification
+          setTimeout(() => dispatch(hideInfo()), 10000);
         });
       }
       else {

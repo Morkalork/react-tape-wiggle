@@ -3,6 +3,7 @@ import proxyquire from 'proxyquire';
 import sinon from 'sinon';
 
 // Stubs
+const clock = sinon.useFakeTimers();
 const fetchStub = sinon.stub();
 const dispatchStub = sinon.stub();
 const showInfoStub = sinon.stub();
@@ -106,6 +107,8 @@ test('refreshPosts should handle a successful call', (assert) => {
   const actions = setup();
   const thunk = actions.refreshPosts();
   thunk(dispatchStub);
+
+  clock.tick(10001);
 
   assert.equals(showInfoStub.callCount, 1, 'Show info was called');
   assert.equals(hideInfoStub.callCount, 1, 'Hide info was called');

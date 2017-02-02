@@ -38,4 +38,4 @@ export const hideError = () => {
 
 export const hideAllNotifications = () => {
   return hideNotification();
-}
+};
