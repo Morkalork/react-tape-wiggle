@@ -7,7 +7,7 @@ const setup = () => {
   return hh(ApplicationHeader);
 };
 
-test.only('ApplicationHeader should render correctly', (assert) => {
+test('ApplicationHeader should render correctly', (assert) => {
   const applicationHeaderHelper = setup();
   const wrapper = shallow(applicationHeaderHelper());
   assert.equals(wrapper.find('header').length, 1, 'applicationHeader has a header element');

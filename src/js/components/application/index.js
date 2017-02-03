@@ -5,6 +5,7 @@ import Notification from './notification';
 import {refreshPosts} from './posts/actions';
 import {connect} from 'react-redux';
 import ApplicationHeader from './application-header';
+import LoadPosts from './load-posts';
 
 /**
  * This is the application component, the base component which renders all other components
@@ -15,11 +16,7 @@ export class Application extends Component {
       div('.wrapper', [
         ApplicationHeader(),
         Notification(),
-        p('.load-posts-area', [
-          button('.load-posts', {
-            onClick: () => this.props.dispatch(refreshPosts())
-          }, 'Load posts')
-        ]),
+        LoadPosts(),
         Posts()
       ])
     );
