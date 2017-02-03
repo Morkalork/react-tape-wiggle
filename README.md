@@ -1,4 +1,4 @@
-# React Tape Wiggle
+# React Tape Wiggle [![Build Status](https://travis-ci.org/Morkalork/react-tape-wiggle.svg?branch=master)](https://travis-ci.org/Morkalork/react-tape-wiggle)
 
 This is an example [https://facebook.github.io/react/](react) project that uses [https://github.com/substack/tape](tape) for testing in combination with [https://github.com/airbnb/enzyme](enzyme) for test rendering, [https://github.com/thlorenz/proxyquire](proxyquire) for handling dependency injection in the tests and [http://sinonjs.org/](sinon) for the actual mocking, stubbing and spying.
 
