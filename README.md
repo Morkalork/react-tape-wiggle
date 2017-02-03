@@ -1,8 +1,8 @@
 # React Tape Wiggle [![Build Status](https://travis-ci.org/Morkalork/react-tape-wiggle.svg?branch=master)](https://travis-ci.org/Morkalork/react-tape-wiggle)
 
-This is an example [https://facebook.github.io/react/](react) project that uses [https://github.com/substack/tape](tape) for testing in combination with [https://github.com/airbnb/enzyme](enzyme) for test rendering, [https://github.com/thlorenz/proxyquire](proxyquire) for handling dependency injection in the tests and [http://sinonjs.org/](sinon) for the actual mocking, stubbing and spying.
+This is an example [react](https://facebook.github.io/react/) project that uses [tape](https://github.com/substack/tape) for testing in combination with [enzyme](https://github.com/airbnb/enzyme) for test rendering, [proxyquire](https://github.com/thlorenz/proxyquire) for handling dependency injection in the tests and [sinon](http://sinonjs.org/) for the actual mocking, stubbing and spying.
 
-Apart from what's mentioned above this project also uses [https://github.com/reactjs/react-redux](redux) to handle state. It uses [https://github.com/jador/react-hyperscript-helpers](react-hyperscript-helpers) for the markup (no JSX found in this project!). You'll also notice the lack of [https://webpack.github.io/](webpack), instead I'm using a very straightforward process of [http://browserify.org/](browserify), [https://github.com/babel/babelify](babelify) and npm scripts!
+Apart from what's mentioned above this project also uses [redux](https://github.com/reactjs/react-redux) to handle state. It uses [react-hyperscript-helpers](https://github.com/jador/react-hyperscript-helpers) for the markup (no JSX found in this project!). You'll also notice the lack of [webpack](https://webpack.github.io/), instead I'm using a very straightforward process of [browersify](http://browserify.org/), [babelify](https://github.com/babel/babelify) and npm scripts!
 
 The purpose of this repository is to showcase a project that uses the above mentioned libraries. I will try to explain how to use redux (in a most simplistic way), react-hyperscript-helpers and tape/enzyme for testing.
 
@@ -41,7 +41,7 @@ This means that every time the store updates (through the button-click in Applic
 
 ## React and Redux
 
-Weeell, this project won't explain react as a concept or redux either. What I will say is that redux helps react handle state in a neat way and I personally found [https://css-tricks.com/learning-react-redux/](this tutorial) fantastic when it came to explaning how all that works.
+Weeell, this project won't explain react as a concept or redux either. What I will say is that redux helps react handle state in a neat way and I personally found [this tutorial](https://css-tricks.com/learning-react-redux/) fantastic when it came to explaning how all that works.
 
 ## react-hyperscript-helpers WTF!?
 
@@ -72,7 +72,7 @@ const component = (
 
 It's a matter of taste, but one is JS-compliant and the other is not. I prefer JSX for simple, stupid components with no messy attributes or nested children and react-hyperscript-helpers for when it gets more messy and complex.
 
-Read more about it [https://github.com/Jador/react-hyperscript-helpers](here) or [https://www.reddit.com/r/reactjs/comments/5jonxn/why_is_hyperscript_rarely_used_being_less_noisy/](here).
+Read more about it [here](https://github.com/Jador/react-hyperscript-helpers) or [here](https://www.reddit.com/r/reactjs/comments/5jonxn/why_is_hyperscript_rarely_used_being_less_noisy/).
 
 ## SASS
 
@@ -107,7 +107,7 @@ Sass is nice. It allows you to add some structure to your styling. In short, you
 It also allows for you to create mixins, which is a great way to handle vendor-specific selectors (such as transform and -moz-transform), variables (`$brand-black: #111`), functions (such as `lighten` or `darken` which takes a color and makes it lighter or darker) and much more. It's good stuff, the only thing is that you have to transpile it from SASS to CSS (in the above example that SASS will be transpiled pretty much into the above CSS).
 In this project I use `node-sass` for transpiling.
 
-Read more about it [http://sass-lang.com/](here) or [https://scotch.io/tutorials/getting-started-with-sass](here).
+Read more about it [sass](http://sass-lang.com/) or [here](https://scotch.io/tutorials/getting-started-with-sass).
 
 ## Testing with tape
 
@@ -127,4 +127,4 @@ test('Foo should throw if called without argument', (assert) => {
 
 You import tape and whatever you want to test and then you set the test up and run your assertion. You have to either tell tape how many tests are going to run, or end it by calling its `.end` function.
 
-Read more about tape [https://github.com/substack/tape](here) or [https://medium.com/javascript-scene/why-i-use-tape-instead-of-mocha-so-should-you-6aa105d8eaf4#.vp494mlpn](here).
+Read more about tape [here](https://github.com/substack/tape) or [here](https://medium.com/javascript-scene/why-i-use-tape-instead-of-mocha-so-should-you-6aa105d8eaf4#.vp494mlpn).
